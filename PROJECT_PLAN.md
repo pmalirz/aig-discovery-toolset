@@ -44,17 +44,17 @@ Build the AI Governance (AIG) Toolset — a "Governance as Code" repository prov
 
 | # | Task | Status | Notes |
 |---|---|:---:|---|
-| 3.1 | Create `skills/aig-validate/SKILL.md` | ⬜ | Schema validation, completeness checks |
-| 3.2 | Create `skills/aig-assess/SKILL.md` | ⬜ | 6-dimension scoring, draft scorecard generation |
-| 3.3 | Create `skills/aig-heatmap/SKILL.md` | ⬜ | Readiness heatmap, executive summary generation |
+| 3.1 | Create `skills/aig-validate/SKILL.md` | ✅ | Schema validation, completeness checks, cross-reference integrity, narrative quality |
+| 3.2 | Create `skills/aig-assess/SKILL.md` | ✅ | 30 criteria with scoring rubric (1–5), evidence statements, verdict matrix, batch comparison |
+| 3.3 | Create `skills/aig-heatmap/SKILL.md` | ✅ | Team readiness matrix, pillar aggregation, Mermaid charts, executive summary, phased roadmap |
 
 ### Phase 4: Agent Skills (Advanced)
 > **Goal:** Build cross-reference analysis and interactive interview skills.
 
 | # | Task | Status | Notes |
 |---|---|:---:|---|
-| 4.1 | Create `skills/aig-matrix/SKILL.md` | ⬜ | TOGAF matrices, Mermaid diagrams, gap analysis |
-| 4.2 | Create `skills/aig-interview/SKILL.md` | ⬜ | Interactive guided interview, auto-fill templates |
+| 4.1 | Create `skills/aig-matrix/SKILL.md` | ✅ | 4 matrices (cap→app, app→data, data→tech, AI clusters), gap analysis, Mermaid diagrams |
+| 4.2 | Create `skills/aig-interview/SKILL.md` | ✅ | Multi-source intake (interview, docx, xlsx, pdf, pptx), guided questions, completeness report |
 
 ### Phase 5: Documentation & Polish
 > **Goal:** Write the top-level README, validate the end-to-end workflow, ensure consistency.
