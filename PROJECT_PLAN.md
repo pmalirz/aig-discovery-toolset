@@ -18,26 +18,26 @@ Build the AI Governance (AIG) Toolset — a "Governance as Code" repository prov
 
 | # | Task | Status | Notes |
 |---|---|:---:|---|
-| 1.1 | Initialize repository structure (`docs/`, `templates/`, `tracker/`, `skills/`) | ⬜ | Create directories and placeholder READMEs |
-| 1.2 | Create `templates/company-profile.md` with YAML schema, example, and guidance | ⬜ | |
-| 1.3 | Create `templates/team-card.md` with YAML schema, example, and guidance | ⬜ | |
-| 1.4 | Create `templates/business-capability.md` with YAML schema, example, and guidance | ⬜ | |
-| 1.5 | Create `templates/ai-use-idea.md` with YAML schema, example, and guidance | ⬜ | Maps to 6-dimension framework |
-| 1.6 | Create `templates/ai-opportunity-scorecard.md` with YAML schema, example, and guidance | ⬜ | Mirrors `AI_Opportunity_Assessment_Framework.md` |
-| 1.7 | Create `templates/engagement-tracker.md` with YAML schema, example, and guidance | ⬜ | |
-| 1.8 | Create `tracker/` scaffold with sample pillar structure and `.gitkeep` files | ⬜ | |
+| 1.1 | Initialize repository structure (`docs/`, `templates/`, `tracker/`, `skills/`) | ✅ | Created directories, READMEs, and .gitkeep files |
+| 1.2 | Create `templates/company-profile.md` with YAML schema, example, and guidance | ✅ | Nordvik Group example |
+| 1.3 | Create `templates/team-card.md` with YAML schema, example, and guidance | ✅ | Claims Processing team example |
+| 1.4 | Create `templates/business-capability.md` with YAML schema, example, and guidance | ✅ | Claims Intake capability with TOGAF/Zachman/CMMI mapping |
+| 1.5 | Create `templates/ai-use-idea.md` with YAML schema, example, and guidance | ✅ | Maps to 6-dimension framework, Intelligent Claims Intake example |
+| 1.6 | Create `templates/ai-opportunity-scorecard.md` with YAML schema, example, and guidance | ✅ | Mirrors the 6-dimension scoring framework with agent metadata |
+| 1.7 | Create `templates/engagement-tracker.md` with YAML schema, example, and guidance | ✅ | Gantt chart, progress dashboard, risks/issues tracking |
+| 1.8 | Create `tracker/` scaffold with sample pillar structure and `.gitkeep` files | ✅ | entities/, pillars/, scorecards/, reports/ |
 
 ### Phase 2: Consultant Guidelines
 > **Goal:** Write all 6 consultant playbooks — step-by-step, empathy-led, with facilitation scripts.
 
 | # | Task | Status | Notes |
 |---|---|:---:|---|
-| 2.1 | Write `docs/guidelines/01-engagement-kickoff.md` | ⬜ | Ethical framing, psychological safety, logistics |
-| 2.2 | Write `docs/guidelines/02-executive-workshop.md` | ⬜ | 2-hour agenda, facilitation script, C-suite focus |
-| 2.3 | Write `docs/guidelines/03-department-discovery.md` | ⬜ | 45–60 min session guide, interview script |
-| 2.4 | Write `docs/guidelines/04-ai-ideation-workshop.md` | ⬜ | Creative workshop, ice-breakers, inclusive format |
-| 2.5 | Write `docs/guidelines/05-ethical-ai-charter.md` | ⬜ | Charter template, facilitation guide |
-| 2.6 | Write `docs/guidelines/06-assessment-synthesis.md` | ⬜ | Agent workflow, score review, exec presentation |
+| 2.1 | Write `docs/guidelines/01-engagement-kickoff.md` | ✅ | Ethical framing, psychological safety, communication template, logistics |
+| 2.2 | Write `docs/guidelines/02-executive-workshop.md` | ✅ | 2-hour agenda, 22 key questions, facilitation tips, language guide |
+| 2.3 | Write `docs/guidelines/03-department-discovery.md` | ✅ | 45–60 min session with 7 blocks, handling difficult sessions guide |
+| 2.4 | Write `docs/guidelines/04-ai-ideation-workshop.md` | ✅ | 3 formats (in-person/virtual/async), ice-breakers, simplified template |
+| 2.5 | Write `docs/guidelines/05-ethical-ai-charter.md` | ✅ | 6 principles, facilitation guide, charter document template |
+| 2.6 | Write `docs/guidelines/06-assessment-synthesis.md` | ✅ | 5-step analysis workflow, prioritization matrix, exec presentation guide |
 
 ### Phase 3: Agent Skills (Core)
 > **Goal:** Build the 3 essential agent skills that automate the assessment pipeline.
@@ -98,5 +98,5 @@ Build the AI Governance (AIG) Toolset — a "Governance as Code" repository prov
 |---|---|---|
 | 2026-04-19 | Approach C: Document-first + agent analysis | Combines Markdown simplicity for data entry with AI-powered analysis. No web UI needed for V1. |
 | 2026-04-19 | Tracker organized by pillars, not company name | Single repo per engagement; company has multiple entities, pillars, and teams — pillars are the natural grouping. |
-| 2026-04-19 | Use `AI_Opportunity_Assessment_Framework.md` as the scoring engine | Already exists in the repo with 6 well-defined dimensions and weighted scoring — no need to reinvent. |
+| 2026-04-19 | Use the existing 6-dimension scoring framework | Use the 6 well-defined dimensions and weighted scoring — no need to reinvent. |
 | 2026-04-19 | Agent skills built on skills.sh | Aligns with existing tooling in the repository; skills are portable and version-controlled. |

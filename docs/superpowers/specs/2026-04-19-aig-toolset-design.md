@@ -66,7 +66,6 @@ eig-toolset/
 │   ├── aig-heatmap/
 │   ├── aig-matrix/
 │   └── aig-interview/
-├── AI_Opportunity_Assessment_Framework.md   # Reference scoring framework
 └── PROJECT_PLAN.md                         # Implementation tracker
 ```
 
@@ -298,7 +297,7 @@ assessment_date: ""
 
 **Filled by:** Anyone in the company
 
-This template maps directly to the 6 dimensions of `AI_Opportunity_Assessment_Framework.md`.
+This template maps directly to the 6 dimensions of the AI Opportunity Assessment Framework.
 
 ```yaml
 ---
@@ -358,7 +357,7 @@ change_impact: ""         # minimal | moderate | significant
 
 **Filled by:** Consultant (with agent pre-scoring via `aig-assess`)
 
-Mirrors the structure of `AI_Opportunity_Assessment_Framework.md`. YAML frontmatter contains the numerical scores; body contains the consultant's narrative.
+Mirrors the structure of the AI Opportunity Assessment Framework. YAML frontmatter contains the numerical scores; body contains the consultant's narrative.
 
 ```yaml
 ---
@@ -614,7 +613,7 @@ Week 1                    Week 2                    Week 3              Week 4
 
 ## 8. Integration with AI Opportunity Assessment Framework
 
-The `AI_Opportunity_Assessment_Framework.md` (already in the repository) is the scoring engine. The AIG Toolset integrates with it as follows:
+The 6-dimension AI Opportunity Assessment Framework is the scoring engine. The AIG Toolset integrates with it as follows:
 
 - **`ai-use-idea.md`** fields are structured to map 1:1 to the Framework's 6 dimensions
 - **`aig-assess` skill** uses the Framework's scoring guidance and weight distribution to generate draft scores
