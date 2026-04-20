@@ -23,7 +23,9 @@ The AIG Toolset is a **"Governance as Code"** repository. It provides everything
 aig-toolset/
 ├── docs/guidelines/          # Consultant playbooks (how to run workshops, interviews, synthesis)
 ├── templates/                # Standardized Markdown templates with YAML frontmatter
-├── tracker/                  # Per-engagement working directory (filled templates, scorecards, reports)
+├── tracker/                  # Per-engagement working directory
+│   └── pillars/*/sources/    #   Raw docs shared by teams + interview notes
+│   └── pillars/*/teams/      #   Silver layer: structured team cards, capabilities, ideas
 ├── skills/                   # Agent skills (skills.sh) for validation, scoring, and visualization
 └── PROJECT_PLAN.md           # Implementation tracker
 ```

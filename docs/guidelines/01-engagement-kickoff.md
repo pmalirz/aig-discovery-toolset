@@ -114,6 +114,7 @@ Prepare this for the Executive Sponsor to send (in their voice, from their email
 3. Copy `templates/company-profile.md` to `tracker/company-profile.md` (to be filled in the executive workshop)
 4. Create pillar directories under `tracker/pillars/` based on the agreed scope:
    ```
+   tracker/pillars/<pillar-name>/sources/        # For raw docs shared by teams + interview notes
    tracker/pillars/<pillar-name>/teams/
    tracker/pillars/<pillar-name>/capabilities/
    tracker/pillars/<pillar-name>/ideas/

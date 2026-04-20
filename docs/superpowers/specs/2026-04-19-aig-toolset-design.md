@@ -469,11 +469,13 @@ tracker/
 │   └── entity-beta.md
 ├── pillars/
 │   ├── <pillar-name>/
-│   │   ├── teams/
+│   │   ├── sources/                     # Raw unstructured docs shared by teams + interview transcriptions
+│   │   │   └── (docx, xlsx, pptx, pdf, txt — raw input, not validated)
+│   │   ├── teams/                       # Silver layer: structured team cards
 │   │   │   └── <team-name>-team-card.md
-│   │   ├── capabilities/
+│   │   ├── capabilities/                # Silver layer: mapped business capabilities
 │   │   │   └── <capability-name>.md
-│   │   └── ideas/
+│   │   └── ideas/                       # Silver layer: AI use ideas
 │   │       └── <idea-name>.md
 │   └── ...
 ├── scorecards/
@@ -486,6 +488,8 @@ tracker/
 **Key design decisions:**
 
 - **Pillars are the primary grouping** — teams, capabilities, and ideas nest under their business pillar
+- **Sources hold raw input** — unstructured documents shared by teams and interview transcriptions/notes are stored in `sources/` by convention, organized by what they describe. These are NOT part of the silver layer and are not validated or scored directly.
+- **The silver layer** — `teams/`, `capabilities/`, and `ideas/` contain structured Markdown + YAML files produced by `aig-interview` from the raw sources. All downstream skills (`aig-validate`, `aig-assess`, `aig-matrix`, `aig-heatmap`) operate exclusively on this silver layer.
 - **Scorecards are cross-cutting** — they live at the top level since they aggregate across pillars for executive review
 - **Reports are top-level** — the heatmap and executive summary represent the final deliverables
 - **Entities are separate** — legal entity profiles are organizational metadata, not assessment data
@@ -503,7 +507,7 @@ All skills are built using the [skills.sh](https://skills.sh/) framework. Each s
 
 **Behavior:**
 
-1. Scans all `.md` files in `tracker/` matching known schemas (team-card, business-capability, ai-use-idea)
+1. Scans all `.md` files in `tracker/` matching known schemas (team-card, business-capability, ai-use-idea). **Skips** `sources/` directories — these contain raw unstructured input, not silver-layer documents.
 2. Parses YAML frontmatter and validates:
    - Required fields are present and non-empty
    - Scores are within valid ranges (1–5)
@@ -571,18 +575,24 @@ All skills are built using the [skills.sh](https://skills.sh/) framework. Each s
 
 ### 6.5 `aig-interview`
 
-**Trigger:** Consultant runs during workshops to guide conversation and auto-fill templates.
+**Trigger:** Consultant runs to translate unstructured input into the md silver layer.
 
 **Behavior:**
 
 1. Consultant specifies the interview type: `executive`, `department`, or `ideation`
-2. The skill presents questions from the corresponding guideline, one at a time
-3. As the consultant records answers (by typing responses or pasting notes), the skill:
+2. Input comes from two complementary sources:
+   - **Documents shared by teams** — unstructured materials (docx, xlsx, pptx, pdf) shared by other people during interviews and discovery, stored in `sources/` folders by convention
+   - **Interview transcriptions and meeting notes** — notes, voice transcriptions, workshop summaries captured by the consultant, also stored in `sources/`
+3. The skill processes both sources:
+   - Delegates to specialized skills (`docx`, `xlsx`, `pptx`, `pdf`) for document reading
+   - Parses raw notes and transcriptions for key information
    - Extracts structured data and populates the YAML frontmatter of the appropriate template
-   - Fills narrative sections from the conversation
+   - Fills narrative sections from the combined input
+   - Merges insights from multiple sources, flags conflicts between them
    - Asks follow-up questions when answers are too vague (e.g., "You mentioned 'a lot of manual work' — can you estimate hours per week?")
-4. At the end, outputs a draft `.md` file ready for review
+4. At the end, outputs a silver-layer `.md` file — structured Markdown + YAML ready for review
 5. The consultant reviews, adjusts, and saves to the appropriate tracker directory
+6. For interactive interviews (no pre-existing documents), the skill walks the consultant through the template fields conversationally, presenting questions from the corresponding guideline one at a time
 
 ---
 

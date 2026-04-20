@@ -213,11 +213,15 @@ Set the frame and build trust:
 
 ### Immediate Actions (Within 1 Hour)
 
-1. **Fill the `team-card.md`** — transfer your notes into the template while the conversation is fresh
-2. **Identify business capabilities** — from the process descriptions, identify 1–3 distinct business capabilities and create `business-capability.md` for each
-3. **Score your assessment** — fill in the `ai_openness.score` based on your observation, not just their self-report
-4. **Write Cultural Observations** — your private notes on team dynamics, leadership style, morale, and AI perception
-5. **Log any AI ideas mentioned** — if the team lead or members suggested specific AI use cases, note them for the ideation workshop
+1. **Store shared documents** — if the team shared any materials (Word docs, spreadsheets, presentations, PDFs), save them to `tracker/pillars/<pillar>/sources/`. These are raw input for later translation.
+2. **Store your interview notes** — save meeting notes, voice transcriptions, or workshop summaries to the same `sources/` folder alongside the shared documents.
+3. **Translate into the silver layer** — use the `aig-interview` skill to translate both shared documents and your interview notes into structured templates:
+   - The skill reads the `sources/` folder, delegates to specialized skills (`docx`, `xlsx`, `pptx`, `pdf`), and generates a draft `team-card.md` and `business-capability.md` with filled YAML frontmatter.
+   - It flags gaps and conflicts between sources for your review.
+4. **Review and adjust** — the generated silver-layer documents are drafts. Review them while the conversation is fresh:
+   - Adjust the `ai_openness.score` based on your observation, not just their self-report
+   - Fill in Cultural Observations with your private notes on team dynamics, leadership style, and morale
+   - Log any AI ideas mentioned during the session for the ideation workshop
 
 ### Quality Checklist
 
@@ -266,7 +270,8 @@ Before moving to the next session, verify:
 
 ## Efficiency Tips
 
-- **Use the `aig-interview` skill** with `--type department` to run a guided interview that auto-fills the template as you converse
-- **Record sessions (with permission)** — if the team is comfortable, a recording lets you focus on the conversation instead of notes
-- **Take photos of whiteboard drawings** — if you sketch a process flow together, photograph it and attach to the capability document
+- **Use the `aig-interview` skill** to translate shared documents and interview notes into silver-layer templates automatically — it reads the `sources/` folder and generates draft team cards and capability maps
+- **Record sessions (with permission)** — if the team is comfortable, a recording lets you focus on the conversation instead of notes. Save the transcription to `sources/`.
+- **Take photos of whiteboard drawings** — if you sketch a process flow together, photograph it and save to `sources/` alongside the shared docs
+- **Encourage teams to share their existing docs** — process manuals, org charts, tech inventories. These go straight into `sources/` and the skill extracts what it can, flagging what's missing.
 - **Send the filled template for review within 24 hours** — while memory is fresh, ask: "Did I capture this accurately?"
