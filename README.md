@@ -74,6 +74,8 @@ The AIG assessment follows a 4-week engagement model:
 3. **Week 3 — AI Ideation**: Creative workshops where anyone can propose AI use cases
 4. **Week 4 — Synthesis & Reporting**: Agent-assisted scoring, heatmap generation, executive presentation
 
+📖 **Read the full story:** [The AIG Journey: A Narrative Guide to AI Adoption](docs/AIG_JOURNEY.md) — Follow an Enterprise Architect from kickoff to final executive readback using the AIG toolset.
+
 ## License
 
 This toolset is proprietary. All rights reserved.

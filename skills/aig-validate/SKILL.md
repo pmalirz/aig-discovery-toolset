@@ -5,7 +5,7 @@ description: "Use this skill to validate AIG assessment documents for completene
 
 # AIG Validate — Template Integrity & Completeness Checker
 
-This skill scans all AIG assessment documents in the `tracker/` directory and produces a comprehensive validation report. It checks schema compliance, data completeness, cross-reference integrity, and narrative quality.
+This skill scans all silver-layer documents in the `tracker/` directory and produces a comprehensive validation report. It checks schema compliance, data completeness, cross-reference integrity, and narrative quality. The silver layer consists of the structured Markdown + YAML files produced by `aig-interview` from unstructured source documents shared by teams.
 
 ## When to Use This Skill
 
@@ -28,6 +28,7 @@ tracker/
 ├── entities/
 ├── pillars/
 │   └── <pillar-name>/
+│       ├── sources/              # Unstructured docs shared by teams (NOT validated — raw input)
 │       ├── teams/
 │       ├── capabilities/
 │       └── ideas/
@@ -35,7 +36,7 @@ tracker/
 └── reports/
 ```
 
-Identify all `.md` files and classify them by their `schema` field in the YAML frontmatter:
+Identify all `.md` files and classify them by their `schema` field in the YAML frontmatter. **Skip** the `sources/` directories — these contain raw unstructured input documents (docx, xlsx, pptx, pdf) that are NOT part of the silver layer and should not be validated.
 - `aig/company-profile/v1`
 - `aig/team-card/v1`
 - `aig/business-capability/v1`

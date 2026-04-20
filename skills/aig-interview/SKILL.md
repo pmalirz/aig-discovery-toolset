@@ -5,12 +5,14 @@ description: "Use this skill to create or populate AIG assessment templates (tea
 
 # AIG Interview & Template Builder
 
-This skill helps consultants create structured AIG assessment documents (team cards, company profiles, business capabilities, AI use ideas) from various input sources. It generates properly formatted Markdown files with YAML frontmatter that conform to the AIG template schemas.
+This skill helps EA consultants translate unstructured input into the **md silver layer** — the structured Markdown + YAML documents that form the foundation for all downstream AIG assessment, scoring, and reporting.
+
+In this workflow, unstructured documents (Word docs, spreadsheets, presentations, PDFs) are **shared by other people** during interviews and discovery sessions. The EA/consultant gathers this input from others and uses this skill to translate it into properly formatted silver-layer documents (team cards, company profiles, business capabilities, AI use ideas) that conform to the AIG template schemas.
 
 ## When to Use This Skill
 
+- A team has **shared unstructured materials** (Word docs, spreadsheets, presentations, PDFs) that need to be translated into the md silver layer
 - A consultant wants to **interview a team** and capture the results in a template
-- A team has sent **unstructured materials** (Word docs, spreadsheets, presentations, PDFs) that need to be converted into AIG templates
 - A consultant has **raw notes** from a workshop or meeting that need to be structured
 - Someone wants to **fill a template from scratch** with guided questions
 - An existing template has **gaps** that need to be identified and filled
@@ -56,26 +58,34 @@ After each answer, confirm understanding and ask follow-up questions when answer
 
 **For other template types, follow the same pattern** — read the template's YAML fields and convert them into natural conversation questions. The template's `## Guidance` section contains tips on what to ask and how.
 
-#### Source B: Unstructured Documents
+#### Source B: Unstructured Documents (Shared by Others)
 
-When the user provides documents (docx, xlsx, pdf, pptx), extract relevant information and map it to the template fields.
+During interviews and discovery, teams share unstructured documents that describe their processes, tech stack, data landscape, and vision. By convention, these source documents should be stored in a `sources/` folder within the appropriate pillar or team directory:
+
+```
+tracker/pillars/<pillar-name>/sources/      # pillar-level shared docs
+tracker/pillars/<pillar-name>/teams/sources/ # team-specific shared docs
+```
+
+The EA/consultant gathers these files and triggers this skill to translate them into the md silver layer.
 
 **Processing workflow:**
 
-1. **Read the document** by delegating to the appropriate specialized skill:
+1. **Locate source documents** in the relevant `sources/` folder (or accept a path from the user)
+2. **Read the document** by delegating to the appropriate specialized skill:
    - **`.docx`** → Use the `docx` skill reading approach
    - **`.xlsx`** → Use the `xlsx` skill data extraction capabilities
    - **`.pdf`** → Use the `pdf` skill to extract text and tables
    - **`.pptx`** → Use the `pptx` skill to extract text from slides and notes
    - **Multiple files** → Process each file and merge the extracted information
 
-2. **Map extracted content to template fields:**
+3. **Map extracted content to template fields:**
    - Identify which YAML fields can be filled from the document content
    - Extract specific data points (team names, headcounts, technology lists, process descriptions)
    - For structured data (spreadsheets), map columns to template fields
    - For narrative documents, extract relevant sections
 
-3. **Flag gaps:** After extraction, clearly list which template fields could NOT be filled from the provided documents and suggest how to obtain the missing information.
+4. **Flag gaps:** After extraction, clearly list which template fields could NOT be filled from the provided documents and suggest how to obtain the missing information.
 
 #### Source C: Raw Notes or Transcripts
 
@@ -96,7 +106,9 @@ Read: templates/<template-type>.md
 
 Extract the YAML frontmatter structure (everything between the first `---` markers) and the Markdown body sections. The generated document must conform exactly to this schema.
 
-### Step 4: Generate the Document
+### Step 4: Generate the Silver-Layer Document
+
+The output of this step is the **md silver layer** — the structured, machine-readable Markdown + YAML that all downstream skills (`aig-validate`, `aig-assess`, `aig-matrix`, `aig-heatmap`) operate on.
 
 Create the output document with:
 
@@ -104,7 +116,7 @@ Create the output document with:
 2. **Filled Markdown body** — narrative sections populated with the extracted or interview content
 3. **Consultant notes** — any observations, flags, or follow-up items noted inline
 
-**Output location:** Save to the appropriate tracker directory:
+**Output location:** Save to the appropriate tracker directory (the silver layer):
 
 - Company profiles → `tracker/company-profile.md`
 - Team cards → `tracker/pillars/<pillar-name>/teams/<team-name>-team-card.md`
@@ -112,7 +124,7 @@ Create the output document with:
 - AI use ideas → `tracker/pillars/<pillar-name>/ideas/<idea-name>.md`
 - Engagement tracker → `tracker/engagement-tracker.md`
 
-If the pillar directory doesn't exist, create it with the necessary subdirectories (teams/, capabilities/, ideas/).
+If the pillar directory doesn't exist, create it with the necessary subdirectories (teams/, capabilities/, ideas/, sources/).
 
 ### Step 5: Completeness Review
 
@@ -140,11 +152,12 @@ Present the completeness summary:
 
 ## Multi-Document Processing
 
-When processing multiple source documents for a single template:
+When processing multiple source documents from a `sources/` folder for a single template:
 
-1. **Merge intelligently** — if the same field appears in multiple documents, use the most specific/recent value
-2. **Note conflicts** — if documents disagree (e.g., different headcount numbers), flag the conflict for consultant resolution
-3. **Track provenance** — note which document each data point came from, so the consultant can verify
+1. **Scan the sources folder** — list all files in the relevant `sources/` directory and process each one
+2. **Merge intelligently** — if the same field appears in multiple documents, use the most specific/recent value
+3. **Note conflicts** — if documents disagree (e.g., different headcount numbers), flag the conflict for consultant resolution
+4. **Track provenance** — note which source document each data point came from, so the consultant can verify against the original shared materials
 
 ## Updating Existing Documents
 

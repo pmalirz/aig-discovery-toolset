@@ -5,7 +5,7 @@ description: "Use this skill to generate TOGAF-style enterprise architecture mat
 
 # AIG Matrix — Enterprise Architecture Cross-Reference Analysis
 
-This skill reads business capability, team card, and company profile documents to generate TOGAF-inspired cross-reference matrices. It surfaces gaps in the architecture, identifies clusters of capabilities ripe for AI intervention, and visualizes the enterprise landscape.
+This skill reads silver-layer business capability, team card, and company profile documents to generate TOGAF-inspired cross-reference matrices. It operates exclusively on the md silver layer (structured Markdown + YAML produced by `aig-interview`), not on the raw unstructured source documents in `sources/` folders. It surfaces gaps in the architecture, identifies clusters of capabilities ripe for AI intervention, and visualizes the enterprise landscape.
 
 ## When to Use This Skill
 

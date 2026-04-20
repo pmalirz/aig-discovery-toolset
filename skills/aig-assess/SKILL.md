@@ -5,7 +5,7 @@ description: "Use this skill to score AI opportunity ideas against the 6-dimensi
 
 # AIG Assess — AI Opportunity Scoring Engine
 
-This skill reads AI use idea documents and generates scored opportunity scorecards using the 6-dimension weighted assessment framework. It produces draft scores with evidence statements that the consultant reviews and adjusts.
+This skill reads silver-layer AI use idea documents and generates scored opportunity scorecards using the 6-dimension weighted assessment framework. The silver layer (structured Markdown + YAML produced by `aig-interview` from unstructured source documents shared by teams) ensures that all scoring is based on consistently structured, validated data. This skill produces draft scores with evidence statements that the consultant reviews and adjusts.
 
 ## When to Use This Skill
 
