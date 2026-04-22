@@ -4,8 +4,8 @@
   <img src="https://img.shields.io/badge/Enterprise-Architecture-10b981?style=for-the-badge" alt="Enterprise Architecture" />
 </p>
 
-<h1 align="center">AIG Toolset</h1>
-<p align="center"><strong>AI Governance for Enterprise Transformation</strong></p>
+<h1 align="center">AIG Discovery Toolset</h1>
+<p align="center"><strong>AI Discovery & Governance for Enterprise Transformation</strong></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/skills-5_agent_skills-8b5cf6?style=flat-square&logo=robot&logoColor=white" alt="5 Agent Skills" />
@@ -129,6 +129,7 @@ The AIG assessment follows a **4-week engagement model** designed around one pri
 │ Charter  │     │ Capture       │     │ Submit       │     │ Present          │
 └──────────┘     └───────────────┘     └──────────────┘     └──────────────────┘
 ```
+
 </details>
 
 ---
@@ -226,6 +227,7 @@ This is where **AI agent skills take center stage**. The consultant has gathered
 **The consultant reviews every score** — agent outputs are starting points, not final answers. The consultant adjusts for political dynamics, unwritten constraints, and the body-language signals no document captures.
 
 **The executive readback (1 hour)** tells the story:
+
 - 🗺️ The heatmap — where the organization is strong and where it's weak
 - 🏆 Top opportunities — with radar charts, scorecards, and clear verdicts
 - ⚠️ Key risks — and what to do about them
