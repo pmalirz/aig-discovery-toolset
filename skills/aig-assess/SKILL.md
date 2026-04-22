@@ -20,11 +20,11 @@ Every idea is scored across 6 dimensions with specific weights:
 
 | # | Dimension | Weight | What it measures |
 |---|---|:---:|---|
-| 1 | **Business Value & Strategic Fit** | 30% | Impact magnitude, strategic alignment, scalability, time-to-value, differentiation |
+| 1 | **Business Value & Strategic Fit** | 30% | Impact magnitude, strategic alignment, scalability, time-to-value, differentiation, user desirability |
 | 2 | **Data Readiness & Availability** | 20% | Data existence, volume, quality, governance |
 | 3 | **Technical Feasibility & Architecture Fit** | 15% | Solution maturity, integration complexity, build vs buy clarity, infrastructure, lock-in risk |
 | 4 | **Cost, Effort & ROI** | 15% | Implementation cost, operating cost, ROI/payback, organizational effort |
-| 5 | **Risk Profile** | 10% | Regulatory, output quality, privacy, adoption resistance, dependency |
+| 5 | **Risk & Ethical Profile** | 10% | Regulatory, output quality, privacy, adoption resistance, dependency, explainability & fairness |
 | 6 | **Organisational & Change Readiness** | 10% | Executive sponsorship, talent, culture, governance framework |
 
 Each criterion within a dimension is scored 1–5:
@@ -56,7 +56,7 @@ For each dimension, evaluate every criterion. The scoring guidance below explain
 
 #### Dimension 1: Business Value & Strategic Fit (30%)
 
-**1a. Magnitude of business impact** (weight: 0.25)
+**1a. Magnitude of business impact** (weight: 0.35)
 - 5: Quantified impact with strong numbers (e.g., "90 hours/week saved, €200K annual value"). Affects a core business process.
 - 4: Quantified but moderate impact, or strong impact with less precise numbers.
 - 3: Impact described but poorly quantified. "Will save significant time" without hours/week.
@@ -90,6 +90,13 @@ For each dimension, evaluate every criterion. The scoring guidance below explain
 - 3: Table-stakes modernization — competitors are doing similar things.
 - 2: Marginal differentiation.
 - 1: No competitive impact.
+
+**1f. End-User Desirability & Workflow Fit** (weight: 0.15)
+- 5: Solves a severe user pain point; integrates seamlessly into daily habits.
+- 4: Strong user value; minor workflow adjustments needed.
+- 3: Moderate user value; requires new tools or screens, breaking flow.
+- 2: Low perceived user value; seen as an administrative burden.
+- 1: Misaligned with how users actually work; high risk of rejection.
 
 #### Dimension 2: Data Readiness & Availability (20%)
 
@@ -188,16 +195,16 @@ For each dimension, evaluate every criterion. The scoring guidance below explain
 - 2: High change — fundamental workflow redesign required.
 - 1: Transformational change — new roles, restructuring, extended transition.
 
-#### Dimension 5: Risk Profile (10%)
+#### Dimension 5: Risk & Ethical Profile (10%)
 
-**5a. Regulatory & compliance risk** (weight: 0.25)
+**5a. Regulatory & compliance risk** (weight: 0.20)
 - 5: No regulatory exposure; low-risk AI Act category; no compliance impact.
 - 4: Minor regulatory considerations; standard compliance approach.
 - 3: Moderate exposure; AI Act considerations but manageable.
 - 2: High exposure; high-risk AI Act category; significant compliance work needed.
 - 1: Prohibitive regulatory barriers; unacceptable risk category.
 
-**5b. AI output quality risk** (weight: 0.30)
+**5b. AI output quality risk** (weight: 0.25)
 - 5: Errors are trivial, easily detected, and self-correcting.
 - 4: Errors are moderate impact but caught by human review gate.
 - 3: Errors could be significant but are detectable with monitoring.
@@ -218,12 +225,19 @@ For each dimension, evaluate every criterion. The scoring guidance below explain
 - 2: Team is cautious (score 1-2); significant change management needed.
 - 1: Team is actively resistant; strong opposition expected.
 
-**5e. Dependency & concentration risk** (weight: 0.10)
+**5e. Dependency & concentration risk** (weight: 0.05)
 - 5: No critical dependencies; manual fallback readily available.
 - 4: Minor dependencies; alternatives exist.
 - 3: Moderate dependencies; fallback possible but with effort.
 - 2: High dependency on specific vendor/system; limited fallback.
 - 1: Critical single-point-of-failure dependency; no fallback.
+
+**5f. Explainability, Fairness & Ethical Risk** (weight: 0.15)
+- 5: Fully transparent logic; output is highly explainable with no bias risk.
+- 4: High explainability; low risk of bias or unfair outcomes.
+- 3: Moderate "black box" elements; requires bias monitoring mechanisms.
+- 2: Complex model lacking explainability; known risks of bias or unfairness.
+- 1: Unexplainable model impacting human rights, safety, or critical opportunities.
 
 #### Dimension 6: Organisational & Change Readiness (10%)
 
@@ -265,10 +279,10 @@ dimension_subtotal = Σ (criterion_score × criterion_weight) × dimension_weigh
 
 Example for Business Value (weight 0.30):
 ```
-subtotal = (impact×0.25 + alignment×0.15 + scalability×0.10 + time_to_value×0.15 + differentiation×0.10) × 0.30
+subtotal = (impact×0.35 + alignment×0.15 + scalability×0.10 + time_to_value×0.15 + differentiation×0.10 + desirability×0.15) × 0.30
 ```
 
-Note: the sum of criterion weights within a dimension may be less than 1.0 — this is intentional. The remaining weight provides room for the consultant's overall dimension judgment.
+All criterion weights within each dimension sum to 1.0.
 
 Total score = sum of all 6 dimension subtotals. Range: 1.00 – 5.00.
 
