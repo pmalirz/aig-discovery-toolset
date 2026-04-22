@@ -41,7 +41,7 @@ Now comes the fun part. You run **AI Ideation Workshops** (`04-ai-ideation-works
 
 You don't just ask the data scientists for ideas; you ask the people doing the actual work. A junior underwriter proposes an idea: *"I spend 15 hours a week cross-referencing policy PDFs. Can an AI do that?"*
 
-She fills out the **AI Use Idea** template (`ai-use-idea.md`) in plain language. She doesn't need to know if it requires a Vector DB or a fine-tuned LLM. She just describes the problem, the proposed solution, and the time saved.
+She fills out the **AI Use Idea** template (`ai-use-idea.md`) in plain language. She doesn't need to know if it requires a Vector DB or a fine-tuned LLM. She just describes the problem, the proposed solution, and the time saved. For teams that prefer a spreadsheet-based workflow, there is also the **AI Opportunity Assessment Form** (`tracker/templates/AI_Opportunity_Assessment_Form.xlsx`) — a fully formulated Excel workbook with drop-down scores, automatic weighted calculations, a radar chart, and a built-in verdict engine.
 
 Ideas flood into the `tracker/pillars/*/ideas/` directories.
 
@@ -57,7 +57,7 @@ The agent scans the entire repository. It ensures every required YAML field is f
 Next, you run the **Assessment Engine**:
 > *"Agent, use `aig-assess` to score all submitted ideas."*
 
-**⚡ The second spark: Automated, objective scoring.** The agent acts as your junior analyst. It reads every idea, cross-references it with the submitter's Team Card and the Company Profile, and applies the rigorous **6-Dimension Scoring Framework**. It calculates Business Value, Data Readiness, Technical Feasibility, Cost/ROI, Risk, and Org Readiness. 
+**⚡ The second spark: Automated, objective scoring.** The agent acts as your junior analyst. It reads every idea, cross-references it with the submitter's Team Card and the Company Profile, and applies the rigorous **6-Dimension Scoring Framework**. It calculates Business Value & Strategic Fit (including end-user desirability), Data Readiness, Technical Feasibility, Cost/ROI, Risk & Ethical Profile (including explainability and fairness), and Organisational Readiness. 
 
 For each idea, it generates an **AI Opportunity Scorecard** (`tracker/scorecards/`). It assigns a draft score (e.g., 4.12), recommends a verdict (*"Proceed with conditions"*), and writes evidence statements. Crucially, it flags low-confidence areas: *"Data quality score is self-reported as a 5; recommend independent audit."*
 
@@ -113,7 +113,7 @@ When running this methodology, keep these core principles in mind:
    The most common blocker in any AI readiness assessment is data quality. *Always* drill deep into the `Data Readiness` dimension. If data is locked in unstructured formats or undocumented databases, surface this as the primary prerequisite.
    
 3. **Capture the "Human in the Loop"**
-   When scoring `Risk Profile`, ensure the assessment considers the human element. An AI system that fully automates a decision is vastly riskier than one that drafts a recommendation for a human to review. Focus early use cases on augmentation, not automation.
+   When scoring the `Risk & Ethical Profile`, ensure the assessment considers the human element. An AI system that fully automates a decision is vastly riskier than one that drafts a recommendation for a human to review. Pay particular attention to explainability and fairness — a model that cannot explain its reasoning is a liability, regardless of accuracy. Focus early use cases on augmentation, not automation.
    
 4. **Quantify the Pain**
    Don't accept "it takes a lot of time." Push for hours per week, error rates, and financial impact. The AIG validation skills are designed to flag unquantified pain points because you cannot calculate ROI without a baseline.
