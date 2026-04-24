@@ -4,8 +4,8 @@
   <img src="https://img.shields.io/badge/Enterprise-Architecture-10b981?style=for-the-badge" alt="Enterprise Architecture" />
 </p>
 
-<h1 align="center">AIG Discovery Toolset</h1>
-<p align="center"><strong>AI Discovery & Governance for Enterprise Transformation</strong></p>
+<h1 align="center">AI Governanace & Discovery Toolset (AIG)</h1>
+<p align="center"><strong>AI Governance and Discovery for Enterprise Transformation</strong></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/skills-5_agent_skills-8b5cf6?style=flat-square&logo=robot&logoColor=white" alt="5 Agent Skills" />
