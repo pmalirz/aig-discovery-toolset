@@ -1,10 +1,20 @@
 {
   "version": 1,
   "skills": {
+    "ai-product-strategy": {
+      "source": "refoundai/lenny-skills",
+      "sourceType": "github",
+      "computedHash": "338db45dda6caa9b6dbcda65391a3df5fd7e60f39b9faa98a89ef1ea734343c6"
+    },
     "brainstorming": {
       "source": "obra/superpowers",
       "sourceType": "github",
       "computedHash": "8df9b47092524833138b58682d03f2e153a242e550d1693657afdbee0cc9cdb0"
+    },
+    "discovery-interview": {
+      "source": "parcadei/continuous-claude-v3",
+      "sourceType": "github",
+      "computedHash": "6f194cd10649bdcb62823f0ae3c43070dad725af451e9de8cc6a9b1404b98656"
     },
     "docx": {
       "source": "anthropics/skills",
@@ -15,6 +25,11 @@
       "source": "vercel-labs/skills",
       "sourceType": "github",
       "computedHash": "9e1c8b3103f92fa8092568a44fe64858de7c5c9dc65ce4bea8f168080e889cfd"
+    },
+    "organizational-transformation": {
+      "source": "refoundai/lenny-skills",
+      "sourceType": "github",
+      "computedHash": "7c5c0aa1ae31fecb46426b307773102d0d6276254d04c02086fb72a0446b4e8f"
     },
     "pdf": {
       "source": "anthropics/skills",
