@@ -42,11 +42,14 @@ Finally, the consultant prepares for the executive readback.
 
 ## 🛠️ Key Agent Capabilities
 
+The toolset's custom capabilities are stored as skills in the `./skills/` directory. Third-party or generic foundational skills (like `pptx`, `docx`, `beautiful-mermaid`) are installed via `npx` into the `./.agents/skills/` directory.
+
 When the user asks you to perform tasks, map them to these core operations:
 - **`aig-interview` / Data Extraction**: Translating raw sources into structured markdown.
 - **`aig-validate`**: Validating completeness, references, and consistency of tracker data.
 - **`aig-assess`**: Scoring AI ideas and generating draft scorecards.
 - **`aig-matrix`**: Generating cross-reference matrices.
 - **`aig-heatmap`**: Generating visual heatmaps and summaries.
+- **`aig-presentation`**: Orchestrating readbacks, generating executive PPTX decks and interactive HTML dashboards.
 
 *Note: Always defer to the consultant's judgment. Your generated scores, team cards, and reports are drafts. The consultant owns the final strategic decision.*

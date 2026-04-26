@@ -22,6 +22,8 @@ call npx skills add https://github.com/anthropics/skills --skill docx
 call npx skills add https://github.com/anthropics/skills --skill xlsx
 call npx skills add https://github.com/anthropics/skills --skill pdf
 call npx skills add https://github.com/anthropics/skills --skill pptx
+call npx skills add https://github.com/intellectronica/agent-skills --skill beautiful-mermaid
+call npx skills add https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max
 
 echo.
 echo Initialization complete! You are ready to start the engagement.

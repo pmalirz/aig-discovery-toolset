@@ -23,6 +23,8 @@ npx skills add https://github.com/anthropics/skills --skill docx
 npx skills add https://github.com/anthropics/skills --skill xlsx
 npx skills add https://github.com/anthropics/skills --skill pdf
 npx skills add https://github.com/anthropics/skills --skill pptx
+npx skills add https://github.com/intellectronica/agent-skills --skill beautiful-mermaid
+npx skills add https://github.com/nextlevelbuilder/ui-ux-pro-max-skill --skill ui-ux-pro-max
 
 echo ""
 echo "Initialization complete! You are ready to start the engagement."
