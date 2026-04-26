@@ -47,11 +47,22 @@ aig-toolset/
 ├── tracker/                  # Per-engagement working directory
 │   └── pillars/*/sources/    #   Raw docs shared by teams + interview notes
 │   └── pillars/*/teams/      #   Silver layer: structured team cards, capabilities, ideas
-├── skills/                   # Agent skills (skills.sh) for validation, scoring, and visualization
+├── skills/                   # Agent skills (skills.sh) for extraction, validation, and scoring
 └── PROJECT_PLAN.md           # Implementation tracker
 ```
 
 ## 🚀 Quick Start
+
+### Prerequisites
+
+- **Node.js and npm**: Required for running the initialization scripts and installing agent skills.
+
+### Initialization
+
+Before starting an engagement, run the initialization script to prepare the repository and install required skills (like pdf, docx, xlsx, pptx for processing raw documents):
+
+- **Windows**: `.\init.bat`
+- **Linux/macOS**: `./init.sh`
 
 ### For Consultants — Starting a New Engagement
 
@@ -100,13 +111,15 @@ Each criterion is scored **1–5** and combined into a weighted total. The resul
 
 ## 🤖 AI Agent Integration
 
-This repository is designed as a "Governance as Code" platform to be operated with the assistance of an AI Agent (e.g., GitHub Copilot, Gemini, Claude). 
+This repository is designed as a "Governance as Code" platform to be operated with the assistance of an AI Agent (e.g., GitHub Copilot, Gemini, Claude).
 
 The repository includes an **[`AGENTS.md`](AGENTS.md)** file which serves as the system prompt and standard operating procedure for the AI. It instructs the agent on how to:
-- Translate raw interview documents into structured YAML/Markdown (`aig-interview`)
-- Validate tracker data completeness (`aig-validate`)
-- Score AI ideas using the 6-dimension framework (`aig-assess`)
-- Generate cross-reference matrices and heatmaps (`aig-matrix`, `aig-heatmap`)
+
+- **Process raw documents** (`pdf`, `docx`, `xlsx`, `pptx`): Extract data from team-provided sources into structured Markdown using specialized skills from [skills.sh](https://skills.sh/).
+- **Translate interviews** (`aig-interview`): Convert raw notes into structured team cards and process maps.
+- **Validate tracker data** (`aig-validate`): Check for completeness and reference integrity.
+- **Score AI ideas** (`aig-assess`): Evaluate opportunities using the 6-dimension framework.
+- **Generate deliverables** (`aig-matrix`, `aig-heatmap`): Produce EA matrices and executive heatmaps.
 
 **To get started:** Point your AI assistant to the `AGENTS.md` file to initialize its context before running an assessment.
 
