@@ -98,15 +98,17 @@ Each criterion is scored **1–5** and combined into a weighted total. The resul
 | 2.00 – 2.74 | 🟠 **Defer** |
 | 1.00 – 1.99 | 🔴 **Do not proceed** |
 
-## 🤖 Agent Skills
+## 🤖 AI Agent Integration
 
-| Skill | Purpose |
-|---|---|
-| `aig-interview` | Ingests raw documents & interview transcripts → structured silver-layer Markdown |
-| `aig-validate` | Checks completeness and consistency of all tracker data |
-| `aig-assess` | Scores AI ideas across the 6-dimension framework → draft scorecards |
-| `aig-heatmap` | Generates visual heatmaps for executive-level prioritization |
-| `aig-matrix` | Produces cross-referencing matrices (capability × technology, team × idea) |
+This repository is designed as a "Governance as Code" platform to be operated with the assistance of an AI Agent (e.g., GitHub Copilot, Gemini, Claude). 
+
+The repository includes an **[`AGENTS.md`](AGENTS.md)** file which serves as the system prompt and standard operating procedure for the AI. It instructs the agent on how to:
+- Translate raw interview documents into structured YAML/Markdown (`aig-interview`)
+- Validate tracker data completeness (`aig-validate`)
+- Score AI ideas using the 6-dimension framework (`aig-assess`)
+- Generate cross-reference matrices and heatmaps (`aig-matrix`, `aig-heatmap`)
+
+**To get started:** Point your AI assistant to the `AGENTS.md` file to initialize its context before running an assessment.
 
 ## 🗓️ The Engagement — How It Works
 
