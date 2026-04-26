@@ -69,18 +69,25 @@
         
         <!-- Tab: Executive Summary -->
         <section id="tab-summary" class="tab-content active">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-                    <h3 class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">Overall Score</h3>
-                    <div class="text-4xl font-bold text-corporate-900"><!-- OVERALL_SCORE_PLACEHOLDER -->3.8<span class="text-lg text-slate-400 font-normal">/5.0</span></div>
+                    <h3 class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">AI Maturity</h3>
+                    <div class="text-4xl font-bold text-corporate-900"><!-- MATURITY_SCORE_PLACEHOLDER -->2.0<span class="text-lg text-slate-400 font-normal">/5.0</span></div>
                 </div>
                 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-                    <h3 class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">Total Ideas Scored</h3>
+                    <h3 class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">Ideas Scored</h3>
                     <div class="text-4xl font-bold text-corporate-900"><!-- TOTAL_IDEAS_PLACEHOLDER -->12</div>
                 </div>
                 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-                    <h3 class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">High-Value Opportunities</h3>
-                    <div class="text-4xl font-bold text-accent-600"><!-- HIGH_VALUE_PLACEHOLDER -->4</div>
+                    <h3 class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">Approved to Proceed</h3>
+                    <div class="text-4xl font-bold text-accent-600"><!-- APPROVED_IDEAS_PLACEHOLDER -->4</div>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex flex-col justify-center">
+                    <h3 class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-2">Assessment Progress</h3>
+                    <div class="w-full bg-slate-200 rounded-full h-2.5 mb-1 mt-2">
+                        <div class="bg-accent-600 h-2.5 rounded-full" style="width: 100%"><!-- PROGRESS_WIDTH_PLACEHOLDER --></div>
+                    </div>
+                    <div class="text-right text-sm font-medium text-corporate-900"><!-- PROGRESS_PCT_PLACEHOLDER -->100%</div>
                 </div>
             </div>
 
@@ -161,11 +168,18 @@
                 <!-- TOP_IDEAS_CARDS_PLACEHOLDER -->
                 <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition">
                     <div class="flex justify-between items-start mb-4">
-                        <h3 class="text-xl font-bold text-corporate-900">Idea Name</h3>
-                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-corporate-100 text-corporate-800">Score: 4.2</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-corporate-900">Idea Name</h3>
+                            <div class="flex items-center gap-2 mt-2">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">Proceed</span>
+                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-600">Med Confidence</span>
+                            </div>
+                        </div>
+                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-lg font-bold bg-corporate-100 text-corporate-800">4.2</span>
                     </div>
-                    <p class="text-slate-600 text-sm mb-4">Short description of the idea and its impact.</p>
-                    <div class="mt-4 pt-4 border-t border-slate-100">
+                    <p class="text-slate-600 text-sm mb-4">Short description of the idea and its impact, along with key strengths identified in the scorecard.</p>
+                    <div class="mt-4 pt-4 border-t border-slate-100 flex justify-between items-center">
+                        <div class="text-xs text-slate-500">Risk Profile: <strong>Low</strong></div>
                         <button class="text-accent-600 hover:text-accent-700 text-sm font-medium flex items-center gap-1">
                             View Full Scorecard <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                         </button>
