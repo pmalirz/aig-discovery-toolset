@@ -108,30 +108,30 @@ Maps the technology infrastructure supporting each data domain.
 This is the most actionable matrix. It identifies clusters of capabilities that share pain points and could benefit from shared AI investments.
 
 **How to build it:**
-1. Read all business capabilities with their `ai_potential_indicators`
-2. Group capabilities by shared indicators and common applications/data
-3. Identify clusters where a single AI investment could serve multiple capabilities
+1. Read all business processes with their `ai_potential_indicators`
+2. Group processes by shared indicators and common applications/data
+3. Identify clusters where a single AI investment could serve multiple processes
 
 ```markdown
 ## AI Opportunity Clusters
 
 ### Cluster 1: Document Intelligence
 **Shared AI technique:** Intelligent Document Processing (IDP)
-**Capabilities in cluster:**
-- Claims Intake & Registration (7/10 AI indicators)
-- Document Classification & Routing (6/10)
+**Processes in cluster:**
+- Claims Intake (7/10 AI indicators)
+- Document Classification (6/10)
 - Invoice Processing (5/10)
 
 **Shared infrastructure:** Azure AI Document Intelligence + LLM post-processing
 **Combined value:** ~€350K annual savings, ~200 hours/week recovered
-**Rationale:** All three capabilities involve extracting structured data from unstructured documents. A shared IDP platform avoids building three separate solutions.
+**Rationale:** All three processes involve extracting structured data from unstructured documents. A shared IDP platform avoids building three separate solutions.
 
 ### Cluster 2: Predictive Analytics
 **Shared AI technique:** ML classification/prediction
-**Capabilities in cluster:**
-- Fraud Detection (4/10 AI indicators, but pattern_recognition = true)
-- Reserve Estimation (prediction_potential = true)
-- Customer Churn Prediction (prediction_potential = true)
+**Processes in cluster:**
+- Fraud Flagging (4/10 AI indicators, but pattern_recognition = true)
+- Reserve Research (prediction_potential = true)
+- Churn Analysis (prediction_potential = true)
 
 **Shared infrastructure:** ML platform + feature store
 **Combined value:** Harder to quantify — risk reduction + pricing accuracy

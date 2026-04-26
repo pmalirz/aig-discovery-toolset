@@ -40,6 +40,7 @@ Identify all `.md` files and classify them by their `schema` field in the YAML f
 - `aig/company-profile/v1`
 - `aig/team-card/v1`
 - `aig/business-capability/v1`
+- `aig/business-process/v1`
 - `aig/ai-use-idea/v1`
 - `aig/scorecard/v1`
 - `aig/engagement-tracker/v1`
@@ -64,7 +65,10 @@ Every template has critical fields that must be filled. Flag any that are empty,
 - `team_name`, `pillar`, `team_lead`, `headcount`, `business_domain`, `mission_statement`, `ai_openness.score`, `top_manual_tasks` (at least 1 with `hours_per_week` > 0), `assessment_date`
 
 **Business Capability critical fields:**
-- `capability_name`, `capability_id`, `owning_team`, `pillar`, `togaf_layer`, `as_is_status`, `maturity_level`, `description`, `ai_potential_indicators` (at least 3 set to true or false — not all default), `assessment_date`
+- `capability_name`, `capability_id`, `owning_team`, `pillar`, `togaf_layer`, `as_is_status`, `maturity_level`, `description`, `assessment_date`
+
+**Business Process critical fields:**
+- `process_name`, `process_id`, `process_type`, `owning_team`, `as_is_status`, `steps` (at least 1 step with `pain_level` > 0), `ai_potential_indicators` (at least 3 set to true or false — not all default), `assessment_date`
 
 **AI Use Idea critical fields:**
 - `idea_name`, `idea_id`, `submitter`, `pillar`, `problem_statement`, `proposed_ai_approach`, `target_kpis` (at least 1 with `current_value` and `target_value`), `submission_date`, `status`
@@ -110,8 +114,9 @@ Check consistency across documents:
 1. **Pillar consistency:** Every `pillar` value in team cards, capabilities, and ideas must match a directory under `tracker/pillars/`
 2. **Team references:** `owning_team` in capabilities should match a `team_name` in a team card
 3. **Idea references:** `idea_ref` in scorecards should match an `idea_id` in an ai-use-idea document
-4. **Capability references:** `related_capability` in ideas should match a `capability_id` in a business capability document
-5. **Entity references:** `entity` values should be consistent across documents
+4. **Process references:** `related_process` in ideas should match a `process_id` in a business process document
+5. **Capability references:** `supported_capabilities` in processes should match a `capability_id` in a business capability document
+6. **Entity references:** `entity` values should be consistent across documents
 
 Flag any broken references with the specific field, expected value, and suggestion for resolution.
 
@@ -150,6 +155,7 @@ Produce a Markdown report with the following structure:
 | Company Profile | 1 | ✅ | 2 | 0 |
 | Team Cards | 8 | 5 ✅ | 2 ⚠️ | 1 ❌ |
 | Business Capabilities | 12 | 10 ✅ | 2 ⚠️ | 0 |
+| Business Processes | 15 | 12 ✅ | 2 ⚠️ | 1 ❌ |
 | AI Use Ideas | 15 | 12 ✅ | 2 ⚠️ | 1 ❌ |
 | Scorecards | 0 | — | — | — |
 | Engagement Tracker | 1 | ✅ | 0 | 0 |

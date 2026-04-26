@@ -46,7 +46,7 @@ Read the following documents:
 1. **The AI use idea** — `tracker/pillars/<pillar>/ideas/<idea>.md`
 2. **The company profile** — `tracker/company-profile.md` (for organizational context, budget, risk appetite, regulatory exposure)
 3. **Related team card** — if `submitter_team` is specified, read the corresponding team card for tech stack, data quality, and AI readiness context
-4. **Related business capability** — if `related_capability` is specified, read it for process details, pain points, and AI potential indicators
+4. **Related business process** — if `related_process` is specified, read it for process details, pain points, and AI potential indicators
 
 If any of these are missing, note it as a confidence-reducing factor but proceed with available data.
 

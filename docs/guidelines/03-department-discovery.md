@@ -104,6 +104,12 @@ Set the frame and build trust:
 4. **"Who do you depend on? Who depends on you?"**
    - Upstream/downstream relationships reveal integration points and handoff pain
 
+> **💡 Mapping tip — Capabilities vs. Processes:** As the team describes their work, listen for two distinct things:
+> - **Capabilities** = *what* they do ("We handle claims intake") — these become lightweight `business-capability.md` documents
+> - **Processes** = *how* they do it step-by-step ("First we open the email, then we classify it, then we enter it into SAP...") — these become the core `business-process.md` documents
+>
+> Keep them separate. The capability rarely changes; the process is where AI discovery happens.
+
 ---
 
 ### Block 3: Pain Points & Manual Work (15 minutes)
@@ -128,7 +134,7 @@ Set the frame and build trust:
    - This surfaces the opportunity cost — what value the team could create if freed from mechanical work
 
 9. **"Walk me through your most annoying process, step by step."**
-   - As they describe it, note each step, who does it, and the pain level (see `business-capability.md` `process_steps`)
+   - As they describe it, note each step, who does it, and the pain level (see `business-process.md` `steps`)
    - Draw it on a whiteboard or in notes as they talk — making the process visible often triggers additional insights
 
 **Quantification prompts** (use throughout):
@@ -231,8 +237,8 @@ Before moving to the next session, verify:
 - [ ] `data_domains_owned` includes sensitivity classification
 - [ ] `applications_owned` and `applications_consumed` are both filled (not just what they own)
 - [ ] `current_ai_usage` includes both sanctioned and unsanctioned tools
-- [ ] At least one `business-capability.md` has been created with `process_steps` filled
-- [ ] The `ai_potential_indicators` flags are set based on evidence
+- [ ] At least one `business-process.md` has been created
+- [ ] The `ai_potential_indicators` flags in the process file are set based on evidence
 
 ---
 

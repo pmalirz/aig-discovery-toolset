@@ -6,7 +6,7 @@ submitter: ""
 submitter_role: ""              # e.g., "Claims Handler", "Team Lead", "CTO"
 submitter_team: ""
 pillar: ""
-related_capability: ""          # links to a business-capability.md capability_id if applicable
+related_process: ""             # links to a business-process.md process_id if applicable
 submission_date: ""             # YYYY-MM-DD
 last_updated: ""                # YYYY-MM-DD
 status: "draft"                 # draft | submitted | under_review | scored | approved | deferred | rejected
@@ -219,7 +219,7 @@ submitter: "Martina Ehrlich"
 submitter_role: "Team Lead"
 submitter_team: "Claims Processing"
 pillar: "Insurance Operations"
-related_capability: "INS-CLM-001"
+related_process: "PROC-CLM-001"
 submission_date: "2026-04-17"
 last_updated: "2026-04-17"
 status: "submitted"

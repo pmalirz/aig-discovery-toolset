@@ -27,7 +27,8 @@ Determine which template the user needs. The available templates are:
 |---|---|---|
 | `company-profile.md` | Capturing organizational context from executive workshops | `templates/company-profile.md` |
 | `team-card.md` | Documenting a team's composition, tech stack, data, and AI readiness | `templates/team-card.md` |
-| `business-capability.md` | Mapping a specific business capability with process steps and AI potential | `templates/business-capability.md` |
+| `business-capability.md` | Mapping a strategic business capability (the stable "what") | `templates/business-capability.md` |
+| `business-process.md` | Mapping a step-by-step workflow with pain points and AI indicators | `templates/business-process.md` |
 | `ai-use-idea.md` | Capturing an AI opportunity proposal from anyone in the organization | `templates/ai-use-idea.md` |
 | `engagement-tracker.md` | Initializing or updating the engagement tracking document | `templates/engagement-tracker.md` |
 
@@ -121,6 +122,7 @@ Create the output document with:
 - Company profiles → `tracker/company-profile.md`
 - Team cards → `tracker/pillars/<pillar-name>/teams/<team-name>-team-card.md`
 - Business capabilities → `tracker/pillars/<pillar-name>/capabilities/<capability-name>.md`
+- Business processes → `tracker/pillars/<pillar-name>/processes/<process-name>.md`
 - AI use ideas → `tracker/pillars/<pillar-name>/ideas/<idea-name>.md`
 - Engagement tracker → `tracker/engagement-tracker.md`
 
@@ -134,7 +136,7 @@ After generating the document, perform a completeness check:
 2. **Scores and ratings:** Verify all 1–5 scores are filled and justified
 3. **Quantification:** Flag narrative-only answers that should have numbers (e.g., "lots of manual work" should have hours/week)
 4. **Cross-references:** Verify that `pillar` and `entity` values match existing tracker entries
-5. **AI potential indicators:** For business capabilities, verify each boolean flag is set based on evidence
+5. **AI potential indicators:** For business processes, verify each boolean flag is set based on evidence
 
 Present the completeness summary:
 

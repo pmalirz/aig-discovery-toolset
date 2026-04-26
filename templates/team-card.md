@@ -65,6 +65,8 @@ top_manual_tasks:               # top 3–5 most time-consuming repetitive manua
 
 key_processes:                  # the major business processes this team owns or contributes to
   - process: ""
+    process_id: ""              # matches process_id in business-capability.md (e.g., "PROC-CLM-001")
+    capability_ref: []          # list of capability_ids this process realizes (e.g., ["INS-CLM-001", "INS-CLM-002"])
     role: ""                    # owner | contributor | consumer
     volume: ""                  # e.g., "200 claims/day", "50 reports/month"
     sla: ""                     # e.g., "24-hour turnaround", "end of business day"
@@ -153,6 +155,9 @@ This template should be filled **collaboratively** during the **Department Disco
 | `current_ai_usage` | Be explicit about sanctioned vs. unsanctioned. Shadow AI is not a problem to suppress — it's a signal of demand |
 | `ai_openness.score` | The consultant's assessment, informed by the conversation — not just what the team lead says |
 | `top_manual_tasks` | The gold mine for AI opportunity identification. Push for specifics: hours, frequency, error rates |
+| `key_processes` | Business processes this team owns or contributes to. Use `process_id` and `capability_ref` to link to the corresponding `business-capability.md` — this creates traceability between teams, processes, and capabilities |
+
+> **💡 Capabilities vs. Processes:** A *capability* is **what** the business does (stable anchor). A *process* is **how** they do it (changes over time). When a team describes their step-by-step workflows, that's a process. The capability it serves is the higher-level "what." Link them via `capability_ref`. **Note:** A large end-to-end process (like "Order-to-Cash") may span multiple capabilities — you can list multiple capability IDs in the `capability_ref` array.
 
 ### What "Good" Looks Like
 
@@ -269,14 +274,20 @@ top_manual_tasks:
 
 key_processes:
   - process: "First Notification of Loss (FNOL)"
+    process_id: "PROC-CLM-001"
+    capability_ref: ["INS-CLM-001"]
     role: "owner"
     volume: "~400 claims/week"
     sla: "Acknowledge within 24 hours, initial assessment within 3 business days"
   - process: "Claims assessment and settlement"
+    process_id: "PROC-CLM-002"
+    capability_ref: ["INS-CLM-002", "INS-FIN-001"] # Spans assessment and financial settlement capabilities
     role: "owner"
     volume: "~350 settlements/week"
     sla: "Standard claims settled within 14 business days"
   - process: "Fraud referral"
+    process_id: "PROC-CLM-003"
+    capability_ref: ["INS-FRD-001"]
     role: "contributor"
     volume: "~15 referrals/week"
     sla: "Flag within 48 hours of detection"

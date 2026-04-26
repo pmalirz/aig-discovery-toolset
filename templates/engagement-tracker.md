@@ -115,6 +115,18 @@ progress:
   total_ideas_deferred: 0
   total_ideas_rejected: 0
   overall_completion_pct: 0     # 0–100
+
+# Per-Team Status (mirrors the Team Interview Status table in the body)
+# Update this after every interview/session for at-a-glance tracking
+team_status:
+  - team: ""
+    pillar: ""
+    interview_date: ""            # YYYY-MM-DD or empty
+    interview_status: ""          # not_scheduled | scheduled | completed | cancelled
+    team_card_status: ""          # not_started | draft | reviewed | final
+    capabilities_mapped: 0
+    ideas_submitted: 0
+    notes: ""
 ---
 
 # Engagement Tracker: [Engagement Name]
@@ -180,6 +192,65 @@ gantt
 | ⏸️ | On hold |
 | ⚠️ | At risk |
 
+---
+
+## Team Interview Status
+
+_Update this table after every interview. This is the single source of truth for who has been interviewed, what artifacts exist, and what’s pending._
+
+| # | Pillar | Team | Interview | Team Card | Capabilities | Ideas | Notes |
+|---|---|---|:---:|:---:|:---:|:---:|---|
+| 1 | _Pillar 1_ | _Team A_ | ⬜ | ⬜ | 0 | 0 | |
+| 2 | _Pillar 1_ | _Team B_ | ⬜ | ⬜ | 0 | 0 | |
+| 3 | _Pillar 2_ | _Team C_ | ⬜ | ⬜ | 0 | 0 | |
+
+**Interview column values:** ⬜ = not scheduled, 📅 _YYYY-MM-DD_ = scheduled, ✅ _YYYY-MM-DD_ = completed
+**Team Card column values:** ⬜ = not started, 🔄 = draft, ✅ = reviewed & final
+
+---
+
+## Scorecard Completion
+
+_Track scoring progress for each AI idea. Updated during Phase 4._
+
+| # | Idea | Source Team | Draft Scorecard | Consultant Review | Verdict | Score |
+|---|---|---|:---:|:---:|:---:|:---:|
+| 1 | _Idea name_ | _Team_ | ⬜ | ⬜ | — | — |
+
+**Verdict values:** ✅ Proceed | 🟢 Proceed w/ conditions | 🟡 Pilot first | 🟠 Defer | 🔴 Do not proceed
+
+---
+
+## Artifact Completion Checklist
+
+_At-a-glance view of all expected deliverables across the engagement, organized by phase._
+
+### Phase 1: Kickoff & Executive Workshop
+- [ ] `company-profile.md` — filled and reviewed
+- [ ] Ethical AI charter — signed
+- [ ] Communication plan — distributed to teams
+
+### Phase 2: Department Discovery
+_Add one line per team as teams are identified:_
+- [ ] `<team-name>-team-card.md` — _status, # capabilities mapped_
+
+### Phase 3: AI Ideation
+- [ ] Workshop completed — _# ideas collected_
+- [ ] Async submissions — _window closes YYYY-MM-DD_
+
+### Phase 4: Assessment & Scoring
+- [ ] `aig-validate` run — all silver-layer files validated
+- [ ] All scorecards drafted — _0/0 complete_
+- [ ] Consultant review — all scores reviewed and adjusted
+
+### Phase 5: Synthesis & Reporting
+- [ ] Heatmap generated (`aig-heatmap`)
+- [ ] Architecture matrices generated (`aig-matrix`)
+- [ ] Executive summary written
+- [ ] Executive presentation delivered — _date_
+
+---
+
 ## Key Decisions & Changes
 
 _Log significant decisions, scope changes, or pivots during the engagement._
@@ -228,10 +299,11 @@ This is the **central coordination document** for an engagement. Update it after
 
 | Event | What to update |
 |---|---|
-| After each workshop/session | Phase status, `sessions_completed`, `artifacts_completed`, meeting notes |
-| When a team card is submitted | `completed_team_cards`, Data Collection Progress table |
-| When an idea is submitted | `ideas_submitted`, Data Collection Progress table |
-| When scoring is complete | `ideas_scored`, `ideas_approved/deferred/rejected` |
+| After each workshop/session | Phase status, Team Interview Status table, meeting notes |
+| When a team card is submitted | Team Interview Status table (Team Card column), Artifact Checklist |
+| When capabilities are mapped | Team Interview Status table (Capabilities column) |
+| When an idea is submitted | Team Interview Status table (Ideas column), Scorecard Completion table |
+| When scoring is complete | Scorecard Completion table, `progress` YAML counts |
 | When scope changes | Scope section, Key Decisions log |
 | Weekly (recommended) | `overall_completion_pct`, Risks & Issues |
 

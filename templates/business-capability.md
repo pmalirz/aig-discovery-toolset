@@ -2,6 +2,7 @@
 schema: aig/business-capability/v1
 capability_name: ""
 capability_id: ""               # short unique identifier, e.g., "INS-CLM-001"
+capability_level: ""            # L1 (domain) | L2 (capability) | L3 (sub-capability) — keep to max 3 levels
 owning_team: ""
 pillar: ""
 entity: ""
@@ -62,32 +63,6 @@ integration_points:
     reliability: ""             # reliable | intermittent | fragile
     notes: ""
 
-# Process Breakdown
-process_steps:
-  - step: ""
-    description: ""
-    actor: ""                   # human | system | human_and_system
-    time_estimate: ""           # e.g., "15 min per item", "automated"
-    pain_level: 0               # 0=No pain, 1=Minor friction, 2=Significant, 3=Critical bottleneck
-
-# Pain Points & Improvement Opportunities
-pain_points:
-  - description: ""
-    impact: ""                  # time_waste | error_prone | customer_impact | compliance_risk | cost
-    severity: ""                # low | medium | high | critical
-
-# AI Potential Indicators
-ai_potential_indicators:
-  repetitive: false             # involves repeating the same steps on different inputs
-  data_rich: false              # large volumes of data are available and accessible
-  error_prone: false            # human errors are frequent and have measurable impact
-  high_volume: false            # processes large quantities of transactions/documents
-  rule_based: false             # follows documented rules or decision trees
-  pattern_recognition: false    # involves identifying patterns across data (fraud, anomalies, trends)
-  language_heavy: false         # involves reading, writing, summarizing, or translating text
-  search_intensive: false       # requires finding information across multiple sources
-  prediction_potential: false   # outcomes could be predicted from historical data
-  classification_needed: false  # items need to be sorted, categorized, or routed
 
 # Dependencies
 dependencies:
@@ -103,23 +78,9 @@ assessed_by: ""
 
 ## Capability Description
 
-_A clear, non-technical description of what this capability does, why it exists, and what business outcome it delivers. Write this so that a C-level executive could understand it._
+_A clear, non-technical description of **what** this capability does, why it exists, and what business outcome it delivers. Write this so that a C-level executive could understand it. Focus on the outcome, not the steps — the "what", not the "how"._
 
-## Current Process ("As-Is")
 
-_Walk through the current process step by step. For each step, note who does it (human or system), approximately how long it takes, and where the friction is. Use the `process_steps` YAML field for structured data; use this section for the narrative._
-
-### Process Flow Diagram
-
-```mermaid
-graph LR
-    A[Step 1] --> B[Step 2]
-    B --> C{Decision Point}
-    C -->|Path A| D[Step 3a]
-    C -->|Path B| E[Step 3b]
-    D --> F[Step 4]
-    E --> F
-```
 
 ## Data Flow
 
@@ -139,27 +100,14 @@ graph LR
 
 _Which systems does this capability connect to? What is the nature of each integration (API, file transfer, manual)? Where are the fragile points?_
 
-## Observations & AI Opportunity Notes
 
-_The consultant's analysis of where AI could improve this capability. This section connects the pain points and AI potential indicators to specific, actionable AI use cases. Be concrete: "Document classification AI could eliminate 45 hours/week of manual sorting" not "AI could help."_
-
-### Highest-Potential AI Interventions
-
-1. _Intervention 1: specific, actionable, tied to a pain point and potential indicator_
-2. _Intervention 2_
-3. _Intervention 3_
-
-### Readiness Assessment
-
-_How ready is this capability for AI intervention? Consider data availability, integration complexity, team willingness, and regulatory constraints._
-
----
 
 # Guidance
 
 ## How to Fill This Template
 
 This template is filled **collaboratively** by the **Department Head and Consultant** during or after the **Department Discovery Session**. One capability document is created per significant business capability identified.
+
 
 ### What Is a "Business Capability"?
 
@@ -178,6 +126,16 @@ A business capability is **what** the business does, independent of **how** it d
 **Too narrow:**
 - "Entering data into field 7 of the SAP form" (this is a task, not a capability)
 
+### Capability Levels
+
+| Level | What it means | Example |
+|:---:|---|---|
+| **L1** | Domain / area | "Claims Management" |
+| **L2** | Capability | "Claims Intake & Registration" |
+| **L3** | Sub-capability | "Claims Document Classification" |
+
+> **Rule of thumb (per LeanIX):** Keep capability hierarchies to **max 2–3 levels**. If you find yourself going deeper, you're probably describing process steps, not capabilities.
+
 ### The EA Framework Mapping Fields
 
 | Field | Purpose | How to fill it |
@@ -188,24 +146,6 @@ A business capability is **what** the business does, independent of **how** it d
 | `zachman_column` | Maps to Zachman Framework column | **How** (Function) for process capabilities, **What** (Data) for data management capabilities, **Who** (People) for organizational capabilities |
 | `maturity_level` | CMMI-inspired maturity | 1=Ad-hoc/chaotic, 2=Repeatable but reactive, 3=Defined and documented, 4=Measured and controlled, 5=Continuously optimizing |
 
-### The AI Potential Indicators
-
-These boolean flags are the **primary input for the `aig-assess` agent skill**. Set them honestly based on what you observed:
-
-| Indicator | Set to `true` when... |
-|---|---|
-| `repetitive` | The same steps are performed over and over on different inputs (e.g., processing each invoice the same way) |
-| `data_rich` | Large volumes of structured or semi-structured data exist and are accessible |
-| `error_prone` | Human errors happen regularly and have measurable consequences (rework, customer complaints, financial loss) |
-| `high_volume` | Hundreds or thousands of transactions/documents are processed per week |
-| `rule_based` | Decisions follow documented rules, decision trees, or lookup tables |
-| `pattern_recognition` | The work involves spotting patterns (fraud, anomalies, trends) in data |
-| `language_heavy` | Significant time is spent reading, writing, summarizing, or translating text |
-| `search_intensive` | Staff spend time hunting for information across multiple systems or document stores |
-| `prediction_potential` | Outcomes (e.g., claim cost, customer churn) could potentially be predicted from historical data |
-| `classification_needed` | Items need to be categorized, sorted, or routed to the right destination |
-
-**Rule of thumb:** If 4+ indicators are `true`, this capability has strong AI potential. If 6+, it's a top-priority candidate.
 
 ---
 
@@ -213,9 +153,10 @@ These boolean flags are the **primary input for the `aig-assess` agent skill**. 
 
 ```yaml
 ---
-schema: aig/business-capability/v1
+schema: aig/business-capability/v2
 capability_name: "Claims Intake & Registration"
 capability_id: "INS-CLM-001"
+capability_level: "L2"
 owning_team: "Claims Processing"
 pillar: "Insurance Operations"
 entity: "Nordvik Insurance SE"
@@ -316,68 +257,6 @@ integration_points:
     reliability: "reliable"
     notes: "Claims emails are manually forwarded from shared mailbox to individual handlers."
 
-process_steps:
-  - step: "Receive FNOL"
-    description: "Claim notification arrives via email, phone, web form, or post"
-    actor: "human"
-    time_estimate: "2 min (web form) to 15 min (phone call)"
-    pain_level: 1
-  - step: "Classify claim type"
-    description: "Determine claim category (property, motor, liability, etc.) and line of business"
-    actor: "human"
-    time_estimate: "3 min"
-    pain_level: 1
-  - step: "Validate policy coverage"
-    description: "Look up the policy in SAP FS-PM, verify coverage is active and claim type is covered"
-    actor: "human_and_system"
-    time_estimate: "5 min"
-    pain_level: 2
-  - step: "Extract claim data from documents"
-    description: "Read the claim form, supporting documents, and correspondence to extract key data fields (date of loss, description, amount, parties involved)"
-    actor: "human"
-    time_estimate: "15 min"
-    pain_level: 3
-  - step: "Enter claim into SAP FS-CM"
-    description: "Manually key all extracted data into SAP fields in the required sequence"
-    actor: "human"
-    time_estimate: "12 min"
-    pain_level: 3
-  - step: "Upload documents to DMS"
-    description: "Scan paper documents (if any), classify all documents, and upload to OpenText"
-    actor: "human"
-    time_estimate: "8 min"
-    pain_level: 2
-  - step: "Send acknowledgement"
-    description: "Generate and send claim acknowledgement letter/email to the customer"
-    actor: "human_and_system"
-    time_estimate: "3 min"
-    pain_level: 0
-
-pain_points:
-  - description: "Manual data extraction from unstructured documents (emails, scanned forms) takes 15 min per claim and has an 8% error rate"
-    impact: "time_waste"
-    severity: "critical"
-  - description: "SAP data entry requires fields to be filled in a specific sequence that doesn't match the order information appears in documents"
-    impact: "time_waste"
-    severity: "high"
-  - description: "OpenText document upload fails during peak hours, requiring manual retries"
-    impact: "error_prone"
-    severity: "medium"
-  - description: "SLA compliance is at 82% vs. 95% target — primarily due to email backlog during peak periods"
-    impact: "customer_impact"
-    severity: "high"
-
-ai_potential_indicators:
-  repetitive: true
-  data_rich: true
-  error_prone: true
-  high_volume: true
-  rule_based: true
-  pattern_recognition: false
-  language_heavy: true
-  search_intensive: false
-  classification_needed: true
-  prediction_potential: false
 
 dependencies:
   upstream_capabilities: ["Customer Communication", "Broker Submission Management"]
@@ -389,21 +268,4 @@ assessed_by: "Senior EA Consultant"
 ---
 ```
 
-## Observations & AI Opportunity Notes (Example)
 
-Claims Intake scores **7 out of 10** AI potential indicators — one of the highest-potential capabilities identified in this assessment. The combination of high volume (80 claims/day), heavy document processing, significant manual data entry, and measurable error rates creates an ideal environment for AI intervention.
-
-### Highest-Potential AI Interventions
-
-1. **Intelligent Document Extraction (IDP):** Replace manual data extraction from claim forms, emails, and supporting documents with an AI-powered Intelligent Document Processing pipeline (e.g., Azure AI Document Intelligence or AWS Textract + LLM). This directly addresses the 15 min/claim bottleneck and the 8% error rate. Estimated impact: **~60 hours/week recovered, error rate reduced to <2%**.
-
-2. **Automated Claim Classification & Routing:** Use an LLM classifier to read incoming claims and automatically categorize them by type, line of business, and complexity — then route to the appropriate handler or fast-track queue. Currently takes 3 min/claim manually. At 400 claims/week, this saves **~20 hours/week** and improves SLA compliance.
-
-3. **Email-to-Structured-Data Conversion:** 70% of claims arrive as unstructured emails. An LLM pipeline could parse these emails, extract key fields (date of loss, policy number, description, claimed amount), and pre-populate the SAP FS-CM registration form. The human reviewer then validates rather than types from scratch.
-
-### Readiness Assessment
-
-- **Data availability:** ✅ Strong — 3.2M historical claims records and 12TB of documents provide ample training/reference data
-- **Integration complexity:** ⚠️ Moderate — SAP FS-CM integration will require custom middleware; OpenText API is fragile
-- **Team willingness:** ✅ Strong — team scores 4/5 on AI openness and has prior OCR pilot experience
-- **Regulatory constraint:** ⚠️ Moderate — medical documents are restricted; any AI processing must comply with GDPR and health data regulations. Human-in-the-loop is mandatory for this data type.
