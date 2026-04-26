@@ -33,10 +33,44 @@
     </script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Mermaid JS -->
+    <!-- Mermaid JS & Pan Zoom -->
+    <script src="https://cdn.jsdelivr.net/npm/svg-pan-zoom@3.6.1/dist/svg-pan-zoom.min.js"></script>
     <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.min.js';
-        mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { primaryColor: '#f0f4f8', primaryTextColor: '#102a43', primaryBorderColor: '#334e68', lineColor: '#0ea5e9' }});
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.14.0/dist/mermaid.esm.min.mjs';
+
+        try {
+            mermaid.initialize({ startOnLoad: false, theme: 'base', themeVariables: { primaryColor: '#f0f4f8', primaryTextColor: '#102a43', primaryBorderColor: '#334e68', lineColor: '#0ea5e9' }});
+
+            // Modules execute deferred, so DOM is already ready
+            await mermaid.run({ querySelector: '.mermaid' });
+
+            // Initialize pan-zoom on all rendered SVGs
+            document.querySelectorAll('.mermaid svg').forEach(svg => {
+                svg.style.maxWidth = '100%';
+                svg.style.height = '100%';
+                window.panZoomInstance = svgPanZoom(svg, {
+                    zoomEnabled: true,
+                    controlIconsEnabled: true,
+                    fit: true,
+                    center: true,
+                    minZoom: 0.5,
+                    maxZoom: 10
+                });
+            });
+        } catch (error) {
+            console.error('Failed to render Mermaid diagram:', error);
+        }
+
+        // Resize pan-zoom on fullscreen change
+        document.addEventListener("fullscreenchange", () => {
+            if (window.panZoomInstance) {
+                setTimeout(() => {
+                    window.panZoomInstance.resize();
+                    window.panZoomInstance.fit();
+                    window.panZoomInstance.center();
+                }, 100);
+            }
+        });
     </script>
     <style>
         body { font-family: 'Inter', sans-serif; }
@@ -101,14 +135,18 @@
 
             <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-8">
                 <h2 class="text-2xl font-semibold text-corporate-900 mb-6">Capability Map & Data Flow</h2>
-                <div class="w-full overflow-x-auto bg-slate-50 p-6 rounded-lg border border-slate-100 flex justify-center">
+                <div id="mermaid-container" class="relative w-full h-[500px] bg-slate-50 rounded-lg border border-slate-100 flex justify-center group overflow-hidden">
+                    <button onclick="toggleFullscreen()" class="absolute top-4 right-4 bg-white border border-slate-200 text-slate-600 px-3 py-1.5 rounded shadow hover:shadow-md opacity-0 group-hover:opacity-100 transition-opacity z-10 flex items-center gap-2 text-sm font-medium hover:bg-slate-50">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"></path></svg>
+                        Fullscreen
+                    </button>
                     <!-- MERMAID_CAPABILITY_MAP_PLACEHOLDER -->
-                    <pre class="mermaid">
-                    graph TD
-                        A[Strategic Planning] --> B(Data Ingestion)
-                        B --> C{AI Processing}
-                        C -->|High Readiness| D[Automation]
-                        C -->|Low Readiness| E[Augmentation]
+                    <pre class="mermaid w-full h-full flex justify-center items-center">
+graph TD
+    A[Strategic Planning] --> B(Data Ingestion)
+    B --> C{AI Processing}
+    C -->|High Readiness| D[Automation]
+    C -->|Low Readiness| E[Augmentation]
                     </pre>
                 </div>
             </div>
@@ -199,6 +237,19 @@
 
     <!-- Interactive Scripts -->
     <script>
+        function toggleFullscreen() {
+            const container = document.getElementById('mermaid-container');
+            if (!document.fullscreenElement) {
+                container.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable fullscreen mode: ${err.message}`);
+                });
+                container.classList.add('bg-white');
+            } else {
+                document.exitFullscreen();
+                container.classList.remove('bg-white');
+            }
+        }
+
         function switchTab(tabId) {
             // Hide all contents
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
